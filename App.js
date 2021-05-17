@@ -1,26 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-
-const getData = () => {
-  const db = firestore();
-  return db
-    .collection('debugCollection')
-    .get()
-    .then(x => {
-      console.log(x);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
+import auth from '@react-native-firebase/auth';
 
 const App = () => {
-  getData();
-
   return (
     <View>
-      <Text>hejsan</Text>
+      <Text>app.js</Text>
     </View>
   );
 };

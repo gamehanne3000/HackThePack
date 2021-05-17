@@ -4,13 +4,23 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
+import com.swmansion.rnscreens.RNScreensPackage;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+import com.swmansion.reanimated.ReanimatedPackage;
+import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import org.reactnative.camera.RNCameraPackage;
+import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
+import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
+import org.reactnative.maskedview.RNCMaskedViewPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
