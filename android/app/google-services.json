@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "960005838415",
+    "project_id": "hackthepack-19c27",
+    "storage_bucket": "hackthepack-19c27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960005838415:android:f924c8b06ab2a2b65ebc3a",
+        "android_client_info": {
+          "package_name": "com.hackthepack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960005838415-0ur1ncpvjmnb33465tti9jc20hcudscu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-wss8Tl76ctPrB5akgA94MrQd8Z9KpZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960005838415-0ur1ncpvjmnb33465tti9jc20hcudscu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
