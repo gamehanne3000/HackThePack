@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import firestore from '@react-native-firebase/firestore';
-import auth from '@react-native-firebase/auth';
+import React, {useEffect} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import SplashScreen from 'react-native-splash-screen';
+import HomeScreen from '@screens/HomeScreen';
 
-const App = () => {
+export default function App() {
+  const Stack = createStackNavigator();
   useEffect(() => {
     SplashScreen.hide();
   });
   return (
-    <View>
-      <Text>app.js</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        {/* <Stack.Screen name="About" component={aboutScreen} /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({});
-
-export default App;
+}
