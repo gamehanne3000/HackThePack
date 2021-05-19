@@ -12,17 +12,22 @@ import {
 import Logo from '@assets/hackThePack.png';
 import QR from '@assets/qr-code-nav.png';
 
+// Stack
 export const Stack = createStackNavigator();
+
+const sharedStyle = {
+  headerStyle: {
+    backgroundColor: 'white',
+    borderBottomWidth: 0,
+    height: Platform.OS === 'android' ? 70 : 100,
+  },
+  animationEnabled: false,
+  headerTitleAlign: 'center',
+};
 
 export const screenOptions = ({navigation}) => {
   return {
-    headerStyle: {
-      backgroundColor: 'white',
-      borderBottomWidth: 0,
-      height: Platform.OS === 'android' ? 70 : 100,
-    },
-    animationEnabled: false,
-    headerTitleAlign: 'center',
+    ...sharedStyle,
     headerTitle: () => {
       return (
         <View
@@ -42,6 +47,22 @@ export const screenOptions = ({navigation}) => {
           onPress={() => navigation.navigate('qr-scanner')}>
           <Image source={QR} style={styles.QR} />
         </TouchableOpacity>
+      );
+    },
+  };
+};
+
+export const authOptions = () => {
+  return {
+    ...sharedStyle,
+    headerTitle: () => {
+      return (
+        <View
+          style={
+            Platform.OS === 'android' ? styles.androidItems : styles.appleItems
+          }>
+          <Image source={Logo} style={styles.logo} />
+        </View>
       );
     },
   };

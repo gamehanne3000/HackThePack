@@ -6,12 +6,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-function StorageUnitScreen() {
+const StorageUnitScreen = () => {
   return (
     <View>
       <Text>Storage unit</Text>
     </View>
   );
-}
+};
 
 export default StorageUnitScreen;

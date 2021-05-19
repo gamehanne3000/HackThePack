@@ -6,12 +6,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-function CreateUnitScreen() {
+const CreateUnitScreen = () => {
   return (
     <View>
       <Text>Form to create Qr</Text>
     </View>
   );
-}
+};
 
 export default CreateUnitScreen;
