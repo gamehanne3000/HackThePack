@@ -3,3 +3,15 @@
         * qr-id for the specific collection
         * title from form
 */
+import React from 'react';
+import {View, Text} from 'react-native';
+
+function CreateUnitScreen() {
+  return (
+    <View>
+      <Text>Form to create Qr</Text>
+    </View>
+  );
+}
+
+export default CreateUnitScreen;

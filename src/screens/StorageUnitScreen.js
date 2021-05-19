@@ -3,3 +3,15 @@
         * qr-code
         * Items
 */
+import React from 'react';
+import {View, Text} from 'react-native';
+
+function StorageUnitScreen() {
+  return (
+    <View>
+      <Text>Storage unit</Text>
+    </View>
+  );
+}
+
+export default StorageUnitScreen;

@@ -1,5 +1,3 @@
-// import HomeHeader
-// import categories/Categories
 import React from 'react';
 import {View, Text} from 'react-native';
 
