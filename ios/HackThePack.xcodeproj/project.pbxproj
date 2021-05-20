@@ -12,6 +12,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E2EC253AEFAD4A4C9F4B813C /* Swansea-q3pd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38381BA1922A4B2EBEAB37F1 /* Swansea-q3pd.ttf */; };
+		004F65D5C1E045B79BACE242 /* SwanseaBold-D0ox.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D45D506EE49329C58BE10 /* SwanseaBold-D0ox.ttf */; };
+		D498C2F7787D425C8B9D239F /* SwanseaBoldItalic-p3Dv.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44F47F3A579E4B6F9B6CBF86 /* SwanseaBoldItalic-p3Dv.ttf */; };
+		EF605926857843688F54EA53 /* SwanseaItalic-AwqD.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37E4F9E469164FC3ABE0C77B /* SwanseaItalic-AwqD.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HackThePack/main.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HackThePack/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		38381BA1922A4B2EBEAB37F1 /* Swansea-q3pd.ttf */ = {isa = PBXFileReference; name = "Swansea-q3pd.ttf"; path = "../src/assets/fonts/Swansea-q3pd.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6E7D45D506EE49329C58BE10 /* SwanseaBold-D0ox.ttf */ = {isa = PBXFileReference; name = "SwanseaBold-D0ox.ttf"; path = "../src/assets/fonts/SwanseaBold-D0ox.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		44F47F3A579E4B6F9B6CBF86 /* SwanseaBoldItalic-p3Dv.ttf */ = {isa = PBXFileReference; name = "SwanseaBoldItalic-p3Dv.ttf"; path = "../src/assets/fonts/SwanseaBoldItalic-p3Dv.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		37E4F9E469164FC3ABE0C77B /* SwanseaItalic-AwqD.ttf */ = {isa = PBXFileReference; name = "SwanseaItalic-AwqD.ttf"; path = "../src/assets/fonts/SwanseaItalic-AwqD.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 				00E356EF1AD99517003FC87E /* HackThePackTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				D2A263179C88408FA3065516 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -123,6 +132,18 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		D2A263179C88408FA3065516 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				38381BA1922A4B2EBEAB37F1 /* Swansea-q3pd.ttf */,
+				6E7D45D506EE49329C58BE10 /* SwanseaBold-D0ox.ttf */,
+				44F47F3A579E4B6F9B6CBF86 /* SwanseaBoldItalic-p3Dv.ttf */,
+				37E4F9E469164FC3ABE0C77B /* SwanseaItalic-AwqD.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -214,6 +235,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E2EC253AEFAD4A4C9F4B813C /* Swansea-q3pd.ttf in Resources */,
+				004F65D5C1E045B79BACE242 /* SwanseaBold-D0ox.ttf in Resources */,
+				D498C2F7787D425C8B9D239F /* SwanseaBoldItalic-p3Dv.ttf in Resources */,
+				EF605926857843688F54EA53 /* SwanseaItalic-AwqD.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
