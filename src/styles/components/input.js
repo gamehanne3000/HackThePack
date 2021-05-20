@@ -6,4 +6,21 @@ import {Typography, Spacing, Colors} from '@styles/base';
     for the different inputs.
 */
 
-export const TextInput = StyleSheet.create({});
+export const TxtInput = StyleSheet.create({
+  inputContainer: {
+    borderColor: Colors.DarkGrey,
+    borderBottomWidth: 1.2,
+    paddingVertical: 0,
+  },
+  container: {
+    paddingVertical: 7,
+  },
+  title: {
+    paddingBottom: 5,
+
+    ...Typography.FormTitle,
+  },
+  placeholder: {
+    ...Typography.Placeholder,
+  },
+});

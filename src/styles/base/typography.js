@@ -55,7 +55,7 @@ export const Placeholder = {
   ...FontColor.DarkGrey,
   ...Font.Regular,
   ...mFontSize(15),
-  opacity: 0.7,
+  opacity: 0.8,
 };
 
 export const BigButtonText = {
