@@ -2,25 +2,47 @@ import React, {useState} from 'react';
 import {View, Text, TextInput} from 'react-native';
 import {AuthStyleSheet as styles} from '@styles/screens/auth';
 import {TxtInput} from '@components/inputs/TextInput';
+import {ButtonForForm} from '@components/inputs/buttons/ButtonForForm';
+import auth from '@react-native-firebase/auth';
 
 // Error handling is not in place due to time constraint
 
-const LoginScreen = () => {
-  const [username, setUsername] = useState(null);
+const LoginScreen = ({navigation}) => {
+  const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  console.log(username);
-  console.log(password);
+  function login() {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+        console.error(error);
+      });
+  }
 
   return (
     <View style={styles.globalSpace}>
+      <View style={styles.alignTitle}>
+        <Text style={styles.mainTitle}>Login</Text>
+      </View>
+
       <TxtInput
-        title="Username"
-        onChange={text => {
-          setUsername(text);
+        title="email"
+        onChange={adress => {
+          setEmail(adress);
         }}
-        value={username}
-        placeholder="username"
+        value={email}
+        placeholder="email"
+        password={false}
       />
       <TxtInput
         title="Password"
@@ -28,9 +50,22 @@ const LoginScreen = () => {
           setPassword(pass);
         }}
         value={password}
-        placeholder="password"
+        placeholder="●●●●●●"
+        password={true}
       />
-      <TextInput />
+
+      <View style={styles.registerTextWrapper}>
+        <Text style={styles.registerText}>Not registered ? </Text>
+        <Text
+          onPress={() => navigation.navigate('register')}
+          style={styles.registerTextClickable}>
+          register here
+        </Text>
+      </View>
+
+      <View style={styles.alignButton}>
+        <ButtonForForm onPress={login} title="Login" />
+      </View>
     </View>
   );
 };

@@ -1,11 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import auth from '@react-native-firebase/auth';
 import {
   StyleSheet,
   TouchableOpacity,
   Platform,
   Image,
   View,
+  Alert,
 } from 'react-native';
 
 // assets
@@ -15,16 +17,20 @@ import QR from '@assets/qr-code-nav.png';
 // Stack
 export const Stack = createStackNavigator();
 
+// minimising the config code for the different navbars as they share the same code.
 const sharedStyle = {
   headerStyle: {
     backgroundColor: 'white',
     borderBottomWidth: 0,
-    height: Platform.OS === 'android' ? 70 : 100,
+    height: Platform.OS === 'android' ? 70 : 110,
   },
   animationEnabled: false,
   headerTitleAlign: 'center',
 };
 
+/*
+  Top navbar config after user has been authenticated
+*/
 export const screenOptions = ({navigation}) => {
   return {
     ...sharedStyle,
@@ -34,7 +40,22 @@ export const screenOptions = ({navigation}) => {
           style={
             Platform.OS === 'android' ? styles.androidItems : styles.appleItems
           }>
-          <Image source={Logo} style={styles.logo} />
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert('Sign out', 'Are you sure', [
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                },
+                {
+                  text: 'sign out',
+                  onPress: () => auth().signOut(),
+                },
+              ])
+            }>
+            <Image source={Logo} style={styles.logo} />
+          </TouchableOpacity>
         </View>
       );
     },
@@ -44,7 +65,7 @@ export const screenOptions = ({navigation}) => {
           style={
             Platform.OS === 'android' ? styles.androidItems : styles.appleItems
           }
-          onPress={() => navigation.navigate('qr-scanner')}>
+          onPress={() => navigation.navigate('qr-camera')}>
           <Image source={QR} style={styles.QR} />
         </TouchableOpacity>
       );
@@ -52,6 +73,9 @@ export const screenOptions = ({navigation}) => {
   };
 };
 
+/*
+  Top navbar config before user has been authenticated
+*/
 export const authOptions = () => {
   return {
     ...sharedStyle,

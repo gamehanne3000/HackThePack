@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Typography, Spacing, Colors} from '@styles/base';
+import {Typography, Colors} from '@styles/base';
 
 /*
     This is a global stylesheet class that handles all styling
@@ -11,13 +11,13 @@ export const TxtInput = StyleSheet.create({
     borderColor: Colors.DarkGrey,
     borderBottomWidth: 1.2,
     paddingVertical: 0,
+    ...Typography.mFontSize(16),
   },
   container: {
     paddingVertical: 7,
   },
   title: {
     paddingBottom: 5,
-
     ...Typography.FormTitle,
   },
   placeholder: {

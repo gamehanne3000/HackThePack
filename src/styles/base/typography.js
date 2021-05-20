@@ -45,6 +45,12 @@ export const mFontSize = mFontSize => {
 
 // Premade styling for certain objects that occurs several times in this application
 
+export const MainTitle = {
+  ...FontColor.DarkGrey,
+  ...Font.Bold,
+  ...mFontSize(30),
+};
+
 export const FormTitle = {
   ...FontColor.Blue,
   ...Font.Bold,

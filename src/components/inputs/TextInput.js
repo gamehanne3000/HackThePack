@@ -2,7 +2,14 @@ import React from 'react';
 import {View, TextInput, Text} from 'react-native';
 import {TxtInput as styles} from '@styles/components/input';
 
-export const TxtInput = ({title, value, onChange, placeholder, ...props}) => {
+export const TxtInput = ({
+  password,
+  title,
+  value,
+  onChange,
+  placeholder,
+  ...props
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -12,6 +19,7 @@ export const TxtInput = ({title, value, onChange, placeholder, ...props}) => {
         onChangeText={onChange}
         placeholder={placeholder}
         placeholderTextColor={styles.placeholder}
+        secureTextEntry={password}
         {...props}
       />
     </View>
