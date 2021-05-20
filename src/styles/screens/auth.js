@@ -8,7 +8,7 @@ import {Typography, Spacing, Colors} from '@styles/base';
 
 export const AuthStyleSheet = StyleSheet.create({
   globalSpace: {
-    ...Spacing.formSpacing,
+    ...Spacing.FormSpacing,
   },
   alignTitle: {
     ...Spacing.AlignTextToCenter,

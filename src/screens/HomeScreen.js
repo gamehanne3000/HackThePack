@@ -1,11 +1,33 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
+import {HomeStyleSheet as styles} from '@styles/screens/home';
+import {ButtonToCreateAList} from '@components/inputs/buttons/ButtonToCreateAList';
 
-const HomeScreen = () => {
+// image
+import qr from '@assets/images/qr-code-home.png';
+
+const HomeScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>Home Screen</Text>
-    </View>
+    <>
+      <View style={[styles.noSpace, styles.headerContainer]}>
+        <Image source={qr} />
+        <View style={styles.headerContentWrapper}>
+          <View style={styles.headerTextContent}>
+            <Text style={styles.title}>Time</Text>
+            <Text style={styles.subTitle}>to start organize</Text>
+          </View>
+          <ButtonToCreateAList
+            onPress={() => {
+              navigation.navigate('create-a-unit');
+            }}
+            title="Create"
+          />
+        </View>
+      </View>
+      <View style={[styles.globalSpace, styles.categoriesContainer]}>
+        <Text>Home Screen</Text>
+      </View>
+    </>
   );
 };
 

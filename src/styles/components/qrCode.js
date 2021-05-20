@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {Spacing, Colors} from '@styles/base';
 
 /*
@@ -6,7 +6,5 @@ import {Spacing, Colors} from '@styles/base';
     concerning layouts of the Qr code in the application.
 */
 
-export const QrCodeIcon = StyleSheet.create({});
-export const QrCodeImageIcon = StyleSheet.create({});
-export const QrCodeMedium = StyleSheet.create({});
-export const QrCodeLarge = StyleSheet.create({});
+export const QrCodeImageIconStyleSheet = StyleSheet.create({});
+export const QrCodeLargeStyleSheet = StyleSheet.create({});

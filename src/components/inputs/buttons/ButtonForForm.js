@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
-import {ButtonForForm as styles} from '@styles/components/button';
+import {ButtonForFormStyleSheet as styles} from '@styles/components/button';
 
 export const ButtonForForm = ({title, onPress, ...props}) => {
   return (

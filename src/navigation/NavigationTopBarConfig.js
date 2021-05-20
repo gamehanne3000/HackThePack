@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 
 // assets
-import Logo from '@assets/hackThePack.png';
-import QR from '@assets/qr-code-nav.png';
+import Logo from '@assets/images/hackThePack.png';
+import QR from '@assets/images/qr-code-nav.png';
 
 // Stack
 export const Stack = createStackNavigator();
