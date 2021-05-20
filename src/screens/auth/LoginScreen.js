@@ -1,32 +1,27 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {AuthStyleSheet as styles} from '@styles/screens/auth';
 import {TxtInput} from '@components/inputs/TextInput';
 import {ButtonForForm} from '@components/inputs/buttons/ButtonForForm';
 import auth from '@react-native-firebase/auth';
-
-// Error handling is not in place due to time constraint
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
   function login() {
-    auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-        console.error(error);
-      });
+    if (email !== null && password !== null) {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log('User account created & signed in!');
+        })
+        .catch(error => {
+          Alert.alert('Ooops..', error.message, [{text: 'ok'}]);
+        });
+    } else {
+      Alert.alert('Ooops..', 'something is missing', [{text: 'ok'}]);
+    }
   }
 
   return (

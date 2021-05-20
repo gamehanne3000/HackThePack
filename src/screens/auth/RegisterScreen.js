@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {AuthStyleSheet as styles} from '@styles/screens/auth';
 import {TxtInput} from '@components/inputs/TextInput';
 import {ButtonForForm} from '@components/inputs/buttons/ButtonForForm';
@@ -14,24 +14,24 @@ const RegisterScreen = () => {
     This Function performs two operations;
       * First: creating the user if they do not already exist,
       * Second: sign the user in.
+      *
+      * And all this with validation at the sametime
   */
   function register() {
-    auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
-      });
+    if (email !== null && password !== null && repeatedPassword !== null) {
+      auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log('User account created & signed in!');
+        })
+        .catch(error => {
+          Alert.alert('Ooops..', error.message, [{text: 'ok'}]);
+        });
+    } else if (repeatedPassword !== password) {
+      Alert.alert('Ooops..', 'password must match', [{text: 'ok'}]);
+    } else {
+      Alert.alert('Ooops..', 'something is missing', [{text: 'ok'}]);
+    }
   }
 
   return (
@@ -41,12 +41,12 @@ const RegisterScreen = () => {
       </View>
 
       <TxtInput
-        title="Username"
+        title="Email adress"
         onChange={adress => {
           setEmail(adress);
         }}
         value={email}
-        placeholder="username"
+        placeholder="email"
         password={false}
       />
       <TxtInput
@@ -70,7 +70,11 @@ const RegisterScreen = () => {
       />
 
       <View style={styles.alignButton}>
-        <ButtonForForm onPress={register} title="Register" />
+        <ButtonForForm
+          onPress={register}
+          title="Register"
+          //disabled={nullIdentifier}
+        />
       </View>
     </View>
   );
