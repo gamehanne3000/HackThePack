@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
-import {AuthStyleSheet as styles} from '@styles/screens/auth';
+import {FormStyleSheet as styles} from '@styles/screens/auth';
 import {TxtInput} from '@components/inputs/TextInput';
 import {ButtonForForm} from '@components/inputs/buttons/ButtonForForm';
 import auth from '@react-native-firebase/auth';
@@ -14,7 +14,7 @@ const LoginScreen = ({navigation}) => {
       auth()
         .signInWithEmailAndPassword(email, password)
         .then(() => {
-          console.log('User account created & signed in!');
+          console.log('User are signed in!');
         })
         .catch(error => {
           Alert.alert('Ooops..', error.message, [{text: 'ok'}]);

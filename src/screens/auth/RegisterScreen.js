@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
-import {AuthStyleSheet as styles} from '@styles/screens/auth';
+import {FormStyleSheet as styles} from '@styles/screens/auth';
 import {TxtInput} from '@components/inputs/TextInput';
 import {ButtonForForm} from '@components/inputs/buttons/ButtonForForm';
 import auth from '@react-native-firebase/auth';

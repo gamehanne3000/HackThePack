@@ -13,7 +13,7 @@ export const HomeStyleSheet = StyleSheet.create({
     ...Spacing.GlobalSpacing,
   },
   noSpace: {
-    ...Spacing.GlobalSpacing,
+    ...Spacing.NoSpacing,
   },
   headerContainer: {
     backgroundColor: Colors.Blue,
@@ -21,7 +21,7 @@ export const HomeStyleSheet = StyleSheet.create({
     paddingTop: 5,
   },
   categoriesContainer: {
-    backgroundColor: Colors.Background,
+    backgroundColor: Colors.Lightgrey,
     flex: 1,
   },
   headerContentWrapper: {

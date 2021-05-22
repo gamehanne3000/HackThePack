@@ -3,10 +3,10 @@ import {Typography, Spacing, Colors} from '@styles/base';
 
 /*
     This is a global stylesheet class that handles all styling
-    for both "Login and register" screens.
+    for both "Login, register and create" screens.
 */
 
-export const AuthStyleSheet = StyleSheet.create({
+export const FormStyleSheet = StyleSheet.create({
   globalSpace: {
     ...Spacing.FormSpacing,
   },
