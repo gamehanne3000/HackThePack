@@ -1,51 +1,87 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {ListItem} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {CategoriesBoxStyleSheet as styles} from '@styles/components/categoriesBox';
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
-
-// import icon from '@assets/icons/camping.png';
+import {View, Text, Image, ScrollView} from 'react-native';
 
 const CategoriesBox = props => {
   const navigation = useNavigation();
-  const dataFromCateogryBoxEndpoint = props.data;
-  const icon = props.icon;
-  console.log(dataFromCateogryBoxEndpoint); // ska bort
+  // Firebase
+  const user = auth().currentUser;
+  const storageUnitRef = firestore().collection('Units');
+  // hooks
+  const [units, setUnits] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  /*
+    Read:
+    Only recieve the units that belongs to the current user
+    by listening for all units that correlates with the user id.
+  */
+  function getCurrentUserCategoryUnits() {
+    setLoading(true);
+    storageUnitRef.where('unitsOwner', '==', user.uid).onSnapshot(
+      snapshot => {
+        const changes = snapshot.docChanges();
+        const items = [];
+        changes.forEach(change => {
+          if (change.type === 'added') {
+            items.push(change.doc.data());
+          }
+        });
+        setUnits(items);
+        setLoading(false);
+      },
+      error => {
+        console.log('Something went wrong retrieving the categories', error);
+      },
+    );
+  }
+
+  // Get the array in from each document
+  const unitsArray = () =>
+    units.map(item => {
+      return item.unit;
+    });
+
+  useEffect(() => {
+    getCurrentUserCategoryUnits();
+  }, []);
 
   return (
     <ScrollView>
-      {dataFromCateogryBoxEndpoint.length > 0 ? (
-        <View style={styles.categoryButtonWrapper}>
-          {dataFromCateogryBoxEndpoint.map((category, index) => (
+      {unitsArray().length > 0 ? (
+        <View>
+          {unitsArray().map((unit, index) => (
             <ListItem
               key={index}
-              onPress={
-                (() => navigation.navigate('category-details'),
-                {
-                  params: {
-                    nameOfunit: category.name,
-                  },
-                })
-              }
-              containerStyle={styles.categorylistElement}>
-              <TouchableOpacity style={styles.categoryButton}>
-                <View style={styles.categoryIconWrapper}>
-                  {/* Image are not connected to firebase because
-                    of size constraint in firebase and i have no time
-                    to figure out the best solution. the image will not
-                    affect the user experience anyway because the project only
-                    design to work as a barebone app with no sharing capabilities
-                    due of the time constraint */}
-                  <Image source={icon} style={styles.categoryIcon} />
+              onPress={() => {
+                navigation.navigate('category-details', {
+                  detailUnit: unit,
+                });
+              }}
+              containerStyle={styles.unitlistElement}>
+              <View style={styles.unitButton}>
+                <View style={styles.unitIconWrapper}>
+                  {/* For now there are only 8 images that can be used */}
+                  <Image source={{uri: unit[0].icon}} style={styles.unitIcon} />
                 </View>
-                <Text style={styles.categoryTitle}>{category.title}</Text>
-              </TouchableOpacity>
+                <Text style={styles.unitTitle}>{unit[0].category}</Text>
+              </View>
             </ListItem>
           ))}
         </View>
       ) : (
         <View style={styles.noDataWrapper}>
-          <Text style={styles.noboxes}>No categories has been created yet</Text>
+          {loading ? (
+            <Text style={styles.noboxes}>loading...</Text>
+          ) : (
+            <Text style={styles.noboxes}>
+              No categories has been created yet
+            </Text>
+          )}
         </View>
       )}
     </ScrollView>

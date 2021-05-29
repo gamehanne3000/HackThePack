@@ -28,7 +28,7 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={[styles.noSpace, styles.categoriesContainer]}>
         <TitleWithBorder title="Categories" />
-        {/* <CategoriesBox data={test} /> */}
+        <CategoriesBox />
       </View>
     </>
   );

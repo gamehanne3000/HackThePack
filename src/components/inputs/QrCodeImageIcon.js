@@ -24,6 +24,7 @@ export const QrCodeImageIconGridInput = ({onSelect, title}) => {
       </TouchableOpacity>
     </View>
   );
+
   return (
     <>
       <Text style={styles.title}>{title}</Text>
@@ -69,7 +70,7 @@ const icons = [
     image: Vacation,
   },
   {
-    key: 'winter',
+    key: '@assets/icons/winter.png',
     image: Winter,
   },
 ];

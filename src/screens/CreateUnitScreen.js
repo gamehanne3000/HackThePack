@@ -1,42 +1,35 @@
-/*  1. create the info needed and send to firebase
-    2. send to list view and retreive the correct data from firebase -> this gives me:
-        * qr-id for the specific collection
-        * title from form
+/*
+  Create the info needed and send to firebase
 */
 import React, {useState} from 'react';
-import {View, Text, Alert} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {FormStyleSheet as styles} from '@styles/screens/auth';
 import {TxtInput} from '@components/inputs/TextInput';
 import {QrCodeImageIconGridInput} from '@components/inputs/QrCodeImageIcon';
 import {ButtonForForm} from '@components/inputs/buttons/ButtonForForm';
-import firestore from '@react-native-firebase/firestore';
+import {createUnitToFirebase} from '../utils/FirebaseHandler';
 
 const CreateUnitScreen = ({navigation}) => {
+  // hooks
+  const [selectedIcon, setSelectedIcon] = useState(null);
   const [title, setTitle] = useState(null);
   const [category, setCategory] = useState(null);
-  const storageRef = firestore().collection('Storage');
-  const [selectedIcon, setSelectedIcon] = useState(null);
 
   const onSelect = item => {
     if (selectedIcon && selectedIcon.key === item.key) {
       setSelectedIcon(null);
     } else {
       setSelectedIcon(item);
-      console.log(item);
     }
   };
 
-  /*
-    Inside the collection i assigns each storage-unit with
-    a random generated id. If it does not exist it will create it
-  */
-  const addUnitToFirebase = async () => {
-    const categoryAndNameOfBox = {
-      name: title,
+  const createUnit = async () => {
+    createUnitToFirebase({
       category: category,
-      // icon - can not implement due to time constraint.
-    };
-    await storageRef.doc().set(categoryAndNameOfBox);
+      title: title,
+      icon: Image.resolveAssetSource(selectedIcon.image).uri,
+    });
+    await navigation.navigate('home-page');
   };
 
   return (
@@ -73,7 +66,7 @@ const CreateUnitScreen = ({navigation}) => {
       </View>
 
       <View style={styles.alignButton}>
-        <ButtonForForm onPress={addUnitToFirebase} title="Generate" />
+        <ButtonForForm onPress={() => createUnit()} title="Generate" />
       </View>
     </View>
   );

@@ -8,7 +8,7 @@ import {Typography, Colors, Spacing, Shadow} from '@styles/base';
 
 export const CategoriesBoxStyleSheet = StyleSheet.create({
   // Category section in home screen
-  categorylistElement: {
+  unitlistElement: {
     paddingLeft: 0,
     paddingRight: 0,
     paddingBottom: 15,
@@ -16,7 +16,7 @@ export const CategoriesBoxStyleSheet = StyleSheet.create({
     ...Spacing.GlobalSpacing,
     backgroundColor: Colors.Lightgrey,
   },
-  categoryButton: {
+  unitButton: {
     ...Shadow.One,
     height: 90,
     width: '100%',
@@ -25,25 +25,25 @@ export const CategoriesBoxStyleSheet = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  categoryIconWrapper: {
+  unitIconWrapper: {
     borderRadius: 50,
   },
-  categoryIcon: {
+  unitIcon: {
     width: 80,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: 5,
+    marginLeft: 10,
   },
-  categoryTitle: {
+  unitTitle: {
     ...Typography.BigButtonText,
-    marginLeft: 40,
+    marginLeft: 20,
   },
 
-  // CategoryDetail screen
-  categoryDetailIcon: {
-    width: 120,
+  // unitDetail screen
+  unitDetailIcon: {
+    width: 80,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: 5,
+    marginLeft: 15,
   },
 });

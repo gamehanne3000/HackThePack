@@ -1,12 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import CategoriesDetailBox from '@components/categories/CategoriesDetailBox';
 
-const CategoriesDetailScreen = () => {
-  return (
-    <View>
-      <Text>List of all the boxes in that category</Text>
-    </View>
-  );
+const categoriesDetailBox = props => {
+  return <CategoriesDetailBox params={props.route.params} />;
 };
 
-export default CategoriesDetailScreen;
+export default categoriesDetailBox;
