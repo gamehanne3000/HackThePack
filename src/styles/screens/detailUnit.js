@@ -5,7 +5,7 @@ import {Spacing, Colors} from '@styles/base';
     This is a global stylesheet class that handles the
     styling for the storage unit detail screen, meaning the
     screen user se when looking after what items that are
-    in the specifik unit.
+    in the specific unit.
 */
 
 export const detailUnitStyleSheet = StyleSheet.create({
@@ -16,6 +16,11 @@ export const detailUnitStyleSheet = StyleSheet.create({
     backgroundColor: Colors.Blue,
     ...Spacing.AlignToCenter,
     paddingTop: 5,
+  },
+  storageUnitHeaderContainer: {
+    backgroundColor: Colors.Blue,
+    ...Spacing.AlignTextToCenter,
+    paddingVertical: 15,
   },
   itemsContainer: {
     backgroundColor: Colors.Lightgrey,

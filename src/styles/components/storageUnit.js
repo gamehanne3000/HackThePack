@@ -12,6 +12,16 @@ import {Spacing, Colors, Shadow, Typography} from '@styles/base';
     every item that are saved in corresponding unit.
 
 */
+
+const shareButton = {
+  ...Shadow.One,
+  width: '100%',
+  borderRadius: 15,
+  backgroundColor: Colors.Background,
+  flexDirection: 'row',
+  alignItems: 'center',
+};
+
 export const unitStyleSheet = StyleSheet.create({
   // Category section in home screen
   unitlistElement: {
@@ -23,13 +33,8 @@ export const unitStyleSheet = StyleSheet.create({
     backgroundColor: Colors.Lightgrey,
   },
   unitButton: {
-    ...Shadow.One,
+    ...shareButton,
     height: 90,
-    width: '100%',
-    borderRadius: 15,
-    backgroundColor: Colors.Background,
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   unitIconWrapper: {
     borderRadius: 50,
@@ -54,6 +59,22 @@ export const unitStyleSheet = StyleSheet.create({
   },
 
   // list item section in storage-unit screen
+  listItemButton: {
+    ...shareButton,
+    height: 70,
+  },
+  listElement: {
+    padding: 0,
+    paddingBottom: 15,
+    margin: 0,
+    backgroundColor: Colors.Lightgrey,
+  },
+  camera: {
+    width: 60,
+    height: 60,
+    resizeMode: 'contain',
+    marginLeft: 10,
+  },
   listContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -65,12 +86,17 @@ export const unitStyleSheet = StyleSheet.create({
     marginHorizontal: 10,
     alignItems: 'center',
   },
+  listItemTitle: {
+    ...Typography.mFontSize(21),
+    ...Typography.Font.Bold,
+    marginLeft: 20,
+    color: Colors.DarkGrey,
+  },
   subtitle: {
     ...Typography.mFontSize(15),
     ...Typography.Font.Regular,
     marginLeft: 20,
     maxWidth: 140,
-    letterSpacing: 0.9,
     lineHeight: 18,
   },
   actionBtn: {
