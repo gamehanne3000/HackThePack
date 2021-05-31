@@ -68,4 +68,5 @@ export const BigButtonText = {
   ...FontColor.DarkGrey,
   ...Font.Bold,
   ...mFontSize(25),
+  letterSpacing: 1,
 };

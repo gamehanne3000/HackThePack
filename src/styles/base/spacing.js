@@ -16,6 +16,7 @@ export const NoSpacing = {
 export const AlignTextToCenter = {
   alignItems: 'center',
   justifyContent: 'center',
+  paddingVertical: 10,
 };
 
 export const AlignToCenter = {

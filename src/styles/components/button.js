@@ -37,4 +37,9 @@ export const ButtonToCreateAListStyleSheet = StyleSheet.create({
     ...Typography.mFontSize(20),
   },
 });
-export const ButtonToAddItem = StyleSheet.create({});
+export const ButtonToAddItem = StyleSheet.create({
+  btnAdd: {
+    width: 60,
+    height: 60,
+  },
+});

@@ -22,7 +22,7 @@ export const createUnitToFirebase = async ({category, title, icon}) => {
         unit: firestore.FieldValue.arrayUnion({
           detailUnit: title,
           category: category,
-          timeStamp: firestore.Timestamp.now().seconds,
+          // timeStamp: firestore.Timestamp.now().seconds, // unable to order the data with array
           icon: icon,
         }),
       },
@@ -41,7 +41,7 @@ export const createUnitToFirebase = async ({category, title, icon}) => {
     .collection('Parts')
     .doc(title)
     .set({
-      partsOwner: user.uid,
+      items: null,
     })
     .then(() => {
       console.log('parts placholder successfully written!');
@@ -75,7 +75,7 @@ export const addPartToFirestore = async ({
       items: firestore.FieldValue.arrayUnion({
         partTitle: partTitle,
         partSubtitle: partSubtitle,
-        timeStamp: firestore.Timestamp.now().seconds,
+        // timeStamp: firestore.Timestamp.now().seconds, // unable to order the data with array
         icon: null,
       }),
     })

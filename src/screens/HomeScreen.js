@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {HomeStyleSheet as styles} from '@styles/screens/home';
 import {ButtonToCreateAList} from '@components/inputs/buttons/ButtonToCreateAList';
-import TitleWithBorder from '@components/TitleWithBorder';
+import {TitleWithBorder} from '@components/TitleWithBorder';
 import CategoriesBox from '@components/categories/CategoriesBox';
 
 // image

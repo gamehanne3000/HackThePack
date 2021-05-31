@@ -26,4 +26,3 @@ export const QrCodeImageGridIconStyleSheet = StyleSheet.create({
     marginBottom: 5,
   },
 });
-export const QrCodeLargeStyleSheet = StyleSheet.create({});

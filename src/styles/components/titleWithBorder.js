@@ -6,10 +6,15 @@ import {Typography, Spacing, Colors} from '@styles/base';
     concerning the main title for both homeScreen but also categoryScreen
 */
 
+const border = {
+  borderColor: Colors.Orange,
+  borderWidth: 3,
+  marginBottom: 10,
+};
+
 export const titleStyleSheet = StyleSheet.create({
   titleWrapper: {
     ...Spacing.AlignTextToCenter,
-    paddingVertical: 10,
   },
   title: {
     ...Typography.mFontSize(25),
@@ -18,9 +23,11 @@ export const titleStyleSheet = StyleSheet.create({
     marginBottom: 5,
   },
   orangeBorder: {
-    borderColor: Colors.Orange,
-    borderWidth: 3,
+    ...border,
     width: '80%',
-    marginBottom: 10,
+  },
+  orangeBorderSmall: {
+    ...border,
+    width: 100,
   },
 });

@@ -3,7 +3,7 @@ import {ListItem} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {CategoriesBoxStyleSheet as styles} from '@styles/components/categoriesBox';
+import {unitStyleSheet as styles} from '@styles/components/storageUnit';
 import {View, Text, Image, ScrollView} from 'react-native';
 
 const CategoriesBox = props => {
@@ -48,6 +48,7 @@ const CategoriesBox = props => {
 
   useEffect(() => {
     getCurrentUserCategoryUnits();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

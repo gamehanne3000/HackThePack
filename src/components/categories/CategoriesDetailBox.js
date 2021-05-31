@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {ListItem} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
-import {CategoriesBoxStyleSheet as styles} from '@styles/components/categoriesBox';
+import {unitStyleSheet as styles} from '@styles/components/storageUnit';
 import {View, Text, Image, ScrollView} from 'react-native';
-import TitleWithBorder from '@components/TitleWithBorder';
 
 // Icon
 import box from '@assets/icons/detailBox.png';
@@ -13,7 +12,6 @@ const CategoriesDetailScreen = ({params}) => {
 
   // Props
   const detailBoxesFromCategory = params.detailUnit;
-  const titleFromCategory = params.detailUnit[0].category;
 
   // Hooks
   const [detailUnits, setDetailUnits] = useState([]);
@@ -33,9 +31,10 @@ const CategoriesDetailScreen = ({params}) => {
     getDetailUnits(); // update page with right information
   }, []);
 
+  console.log(detailUnits);
+
   return (
     <View>
-      <TitleWithBorder title={titleFromCategory} />
       <ScrollView>
         {detailUnits.length > 0 ? (
           <View>
@@ -43,7 +42,9 @@ const CategoriesDetailScreen = ({params}) => {
               <ListItem
                 key={index}
                 onPress={() => {
-                  navigation.navigate('unit-details');
+                  navigation.navigate('storage-unit', {
+                    detailUnit: unit.detailUnit,
+                  });
                 }}
                 containerStyle={styles.unitlistElement}>
                 <View style={styles.unitButton}>
