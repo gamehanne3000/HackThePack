@@ -16,7 +16,7 @@ import editBtn from '@assets/icons/change-btn.png';
 const ItemBox = props => {
   return (
     <>
-      {props.listData.length < 0 ? (
+      {props.listData.length > 0 ? (
         <ScrollView>
           {props.listData.map((item, index) => (
             <ListItem key={index} containerStyle={styles.listElement}>
