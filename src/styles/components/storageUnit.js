@@ -101,7 +101,7 @@ export const unitStyleSheet = StyleSheet.create({
     maxWidth: 140,
     lineHeight: 18,
   },
-  actionBtn: {
+  removeBtn: {
     width: 55,
     height: 55,
     marginTop: 10,
@@ -113,7 +113,6 @@ export const modalStyleSheet = StyleSheet.create({
     ...Spacing.AlignToCenter,
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
-
   modalView: {
     backgroundColor: Colors.Lightgrey,
     borderRadius: 20,
@@ -150,5 +149,10 @@ export const modalStyleSheet = StyleSheet.create({
   warning: {
     color: Colors.Red,
     ...Typography.Font.Bold,
+  },
+  updateBtn: {
+    width: 55,
+    height: 55,
+    marginTop: 10,
   },
 });
