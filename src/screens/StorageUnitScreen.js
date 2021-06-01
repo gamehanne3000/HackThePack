@@ -29,7 +29,7 @@ const StorageUnitScreen = props => {
     // Reference
     const partsRef = firestore()
       .collection('Units')
-      .doc(specificCategory) // reference
+      .doc(specificCategory)
       .collection('Parts');
 
     // Real time observer
@@ -76,7 +76,7 @@ const StorageUnitScreen = props => {
           <ButtonToAddItem data={path} />
         </View>
         <ScrollView>
-          <ItemBox listData={items} />
+          <ItemBox listData={items} data={path} />
         </ScrollView>
       </View>
     </>

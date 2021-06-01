@@ -51,9 +51,9 @@ export const createUnitToFirebase = async ({category, title, icon}) => {
     });
 };
 
-/* Read: can be found 'CategoriesBox.js' for example */
+/* Read: can be found at 'CategoriesBox.js' and 'storageUnitScreen' */
 
-/* Delete: */
+/* Remove: can be found at 'itemBox.js' */
 
 /*
   Add:
