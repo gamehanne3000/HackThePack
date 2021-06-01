@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {Spacing, Colors, Shadow, Typography} from '@styles/base';
 
 /*
@@ -12,6 +12,8 @@ import {Spacing, Colors, Shadow, Typography} from '@styles/base';
     every item that are saved in corresponding unit.
 
 */
+
+const screenWidth = Dimensions.get('window').width;
 
 const shareButton = {
   ...Shadow.One,
@@ -103,5 +105,50 @@ export const unitStyleSheet = StyleSheet.create({
     width: 55,
     height: 55,
     marginTop: 10,
+  },
+});
+
+export const modalStyleSheet = StyleSheet.create({
+  centeredView: {
+    ...Spacing.AlignToCenter,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+
+  modalView: {
+    backgroundColor: Colors.Lightgrey,
+    borderRadius: 20,
+    padding: 35,
+    width: screenWidth - 80,
+    ...Shadow.one,
+  },
+  buttonWrapper: {
+    ...Spacing.AlignTextToCenter,
+  },
+  button: {
+    borderRadius: 12,
+    padding: 13,
+    elevation: 2,
+    marginTop: 20,
+    width: 150,
+  },
+  textStyle: {
+    color: Colors.Lightgrey,
+    ...Typography.Font.Bold,
+    ...Typography.mFontSize(20),
+    textAlign: 'center',
+  },
+  withBlueBackground: {
+    backgroundColor: Colors.Blue,
+  },
+  withYellowBackground: {
+    backgroundColor: Colors.Orange,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  warning: {
+    color: Colors.Red,
+    ...Typography.Font.Bold,
   },
 });

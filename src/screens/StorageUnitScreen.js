@@ -73,7 +73,7 @@ const StorageUnitScreen = props => {
       <View style={styles.itemsContainer}>
         <View style={styles.itemsContainerHeader}>
           <TitleWithBorderAtLeftSide title={specificDetailUnit} />
-          <ButtonToAddItem />
+          <ButtonToAddItem data={path} />
         </View>
         <ScrollView>
           <ItemBox listData={items} />
