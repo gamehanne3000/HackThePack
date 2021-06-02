@@ -41,6 +41,7 @@ export const createUnitToFirebase = async ({category, title, icon}) => {
     .collection('Parts')
     .doc(title)
     .set({
+      owner: user.uid,
       items: null,
     })
     .then(() => {

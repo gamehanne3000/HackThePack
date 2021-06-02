@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, Text} from 'react-native';
 import GenerateQr from '@components/storage-unit/GenerateQr';
 import {detailUnitStyleSheet as styles} from '@styles/screens/detailUnit';
 import {TitleWithBorderAtLeftSide} from '@components/TitleWithBorder';
 import {ButtonToAddItem} from '@components/storage-unit/AddItem';
 import ItemBox from '@components/storage-unit/ItemBox';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 /*
     This screen are the placheholder as the data from firebase allocates correct data respectively.
@@ -20,50 +21,83 @@ const StorageUnitScreen = props => {
   const specificDetailUnit = props.route.params.detailUnit.detailUnit;
   // Hook
   const [items, setItems] = useState([]);
+  const [permission, setPermission] = useState(false);
+  const [currentUser, setCurrentUser] = useState(false);
 
   /*
      Read:
      Retrieve all list items from the current box in real time
   */
-  function getItems() {
-    // Reference
-    const partsRef = firestore()
+  async function getItems() {
+    setPermission(true);
+
+    // Check if the current unit are the same as the author of the unit
+    const checkUser = currUser => {
+      try {
+        if (currUser !== auth().currentUser.uid) {
+          setPermission(false);
+        } else {
+          setCurrentUser(currUser);
+        }
+      } catch (error) {
+        console.log('something happend: ', error);
+      }
+    };
+
+    await firestore()
       .collection('Units')
       .doc(specificCategory)
-      .collection('Parts');
-
-    // Real time observer
-    partsRef.onSnapshot(
-      snapshot => {
-        const changes = snapshot.docChanges();
-
-        changes.forEach(change => {
-          /*
-            Listeners for when something is goes trough firebase firestore
+      .collection('Parts')
+      .doc(specificDetailUnit)
+      .get()
+      .then(value => {
+        // Here comes the function checkUser() in to play
+        // to check the current box user.uid
+        checkUser(value.data().owner);
+      })
+      .then(() => {
+        firestore()
+          .collection('Units')
+          .doc(specificCategory)
+          .collection('Parts')
+          .where('owner', '==', currentUser) // current user id
+          .onSnapshot(
+            snapshot => {
+              const changes = snapshot.docChanges();
+              changes.forEach(change => {
+                /*
+              Listeners for when something is goes trough firebase firestore
             */
-          if (change.type === 'added') {
-            setItems(change.doc.data().items); // Only push the new objects
-            console.log('New item: ', change.doc.data());
-          }
-
-          if (change.type === 'modified') {
-            console.log('Modified item: ', change.doc.data());
-          }
-
-          if (change.type === 'removed') {
-            console.log('Removed list item: ', change.doc.data());
-          }
-        });
-      },
-      error => {
-        console.log('Something went wrong retrieving the items', error);
-      },
-    );
+                if (change.type === 'added') {
+                  setItems(change.doc.data().items); // Only push the new objects
+                  console.log('New item: ', change.doc.data());
+                }
+                if (change.type === 'modified') {
+                  console.log('Modified item: ', change.doc.data());
+                }
+                if (change.type === 'removed') {
+                  console.log('Removed list item: ', change.doc.data());
+                }
+              });
+            },
+            error => {
+              console.log('Something went wrong retrieving the items', error);
+            },
+          );
+      });
   }
 
   useEffect(() => {
     getItems();
   }, []);
+
+  if (!permission) {
+    return (
+      <View>
+        <Text>you are not allowed to read this unit </Text>
+      </View>
+    );
+  }
 
   return (
     <>
