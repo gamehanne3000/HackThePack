@@ -23,13 +23,15 @@ const StorageUnitScreen = props => {
   const [items, setItems] = useState([]);
   const [permission, setPermission] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   /*
-     Read:
-     Retrieve all list items from the current box in real time
+    Read:
+    Retrieve all list items from the current box in real time
   */
-  async function getItems() {
+  useEffect(() => {
     setPermission(true);
+    setLoading(true);
 
     // Check if the current unit are the same as the author of the unit
     const checkUser = currUser => {
@@ -44,7 +46,7 @@ const StorageUnitScreen = props => {
       }
     };
 
-    await firestore()
+    firestore()
       .collection('Units')
       .doc(specificCategory)
       .collection('Parts')
@@ -66,10 +68,10 @@ const StorageUnitScreen = props => {
               const changes = snapshot.docChanges();
               changes.forEach(change => {
                 /*
-              Listeners for when something is goes trough firebase firestore
-            */
+                  Listeners for when something is goes trough firebase firestore
+                */
                 if (change.type === 'added') {
-                  setItems(change.doc.data().items); // Only push the new objects
+                  setItems(() => change.doc.data().items); // Only push the new objects
                   console.log('New item: ', change.doc.data());
                 }
                 if (change.type === 'modified') {
@@ -84,11 +86,8 @@ const StorageUnitScreen = props => {
               console.log('Something went wrong retrieving the items', error);
             },
           );
+        setLoading(false);
       });
-  }
-
-  useEffect(() => {
-    getItems();
   }, []);
 
   if (!permission) {
@@ -109,9 +108,13 @@ const StorageUnitScreen = props => {
           <TitleWithBorderAtLeftSide title={specificDetailUnit} />
           <ButtonToAddItem data={path} />
         </View>
-        <ScrollView>
-          <ItemBox listData={items} data={path} />
-        </ScrollView>
+        {!loading ? (
+          <ScrollView>
+            <ItemBox listData={items} data={path} />
+          </ScrollView>
+        ) : (
+          <Text>Loading..</Text>
+        )}
       </View>
     </>
   );
