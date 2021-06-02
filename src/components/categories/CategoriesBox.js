@@ -23,8 +23,8 @@ const CategoriesBox = props => {
   function getCurrentUserCategoryUnits() {
     setLoading(true);
     storageUnitRef.where('unitsOwner', '==', user.uid).onSnapshot(
-      snapshot => {
-        const changes = snapshot.docChanges();
+      async snapshot => {
+        const changes = await snapshot.docChanges();
         const items = [];
         changes.forEach(change => {
           if (change.type === 'added') {

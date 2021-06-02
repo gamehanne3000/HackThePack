@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {
-  Alert,
   Modal,
   Image,
   Text,
@@ -33,6 +32,7 @@ export const ButtonToAddItem = props => {
     if (item !== null) {
       setWarning(false);
       setModalVisible(!modalVisible);
+
       //Get current path in firebase and update the array with a new item.
       addPartToFirestore({
         title: specificDetailUnit,
@@ -40,6 +40,7 @@ export const ButtonToAddItem = props => {
         partTitle: item,
         partSubtitle: optional,
       });
+
       setItem(null);
       setOptional(null);
     } else {

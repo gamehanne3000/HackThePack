@@ -1,8 +1,3 @@
-/*
-    This screen are the placheholder as the data from firebase allocates correct data respectively.
-        * qr-code
-        * Items
-*/
 import React, {useEffect, useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import GenerateQr from '@components/storage-unit/GenerateQr';
@@ -12,12 +7,17 @@ import {ButtonToAddItem} from '@components/storage-unit/AddItem';
 import ItemBox from '@components/storage-unit/ItemBox';
 import firestore from '@react-native-firebase/firestore';
 
+/*
+    This screen are the placheholder as the data from firebase allocates correct data respectively.
+        * qr-code
+        * Items
+*/
+
 const StorageUnitScreen = props => {
   // Props
   const path = props.route.params.detailUnit;
   const specificCategory = props.route.params.detailUnit.category;
   const specificDetailUnit = props.route.params.detailUnit.detailUnit;
-  const specificIcon = props.route.params.detailUnit.icon;
   // Hook
   const [items, setItems] = useState([]);
 
@@ -68,7 +68,7 @@ const StorageUnitScreen = props => {
   return (
     <>
       <View style={[styles.noSpace, styles.storageUnitHeaderContainer]}>
-        <GenerateQr icon={specificIcon} data={path} />
+        <GenerateQr data={path} />
       </View>
       <View style={styles.itemsContainer}>
         <View style={styles.itemsContainerHeader}>

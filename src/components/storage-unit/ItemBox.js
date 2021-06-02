@@ -1,8 +1,3 @@
-/*
-    Display the stored items of the respective unit.
-        * data are retreived based on the title of the box
-            - when manually or scanned by the qr-code the id are the same for easier management
-*/
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {unitStyleSheet as styles} from '@styles/components/storageUnit';
@@ -13,6 +8,11 @@ import {ButtonToChangeItem} from '@components/storage-unit/UpdateItem';
 // image
 import cameraPlacholder from '@assets/icons/cameraPlaceholder.png';
 import deleteBtn from '@assets/icons/trash-btn.png';
+
+/*
+    Display the stored items of the respective unit.
+        * data are retreived based on the category & title of the box
+*/
 
 const ItemBox = props => {
   const category = props.data.category;
@@ -40,7 +40,7 @@ const ItemBox = props => {
 
   return (
     <>
-      {props.listData.length > 0 ? (
+      {props.listData !== null ? (
         <ScrollView>
           {props.listData.map((item, index) => (
             <ListItem key={index} containerStyle={styles.listElement}>

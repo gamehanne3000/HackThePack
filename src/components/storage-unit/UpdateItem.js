@@ -34,7 +34,7 @@ export const ButtonToChangeItem = props => {
   async function updateItem() {
     setModalVisible(!modalVisible);
 
-    // Update object's name property.
+    // This updates the object's name property on the client side
     // Important that this runs before sending to firebase
     // Because i want the changes and not the old object
     items[id].partTitle = item;
