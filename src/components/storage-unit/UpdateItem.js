@@ -31,7 +31,7 @@ export const ButtonToChangeItem = props => {
     This function closes down the modal.
       -> updates the respektive data in firestore.
   */
-  async function updateItem() {
+  function updateItem() {
     setModalVisible(!modalVisible);
 
     // This updates the object's name property on the client side
@@ -45,7 +45,7 @@ export const ButtonToChangeItem = props => {
       .doc(specificCategory)
       .collection('Parts')
       .doc(specificDetailUnit)
-      .set({
+      .update({
         items: items,
       });
   }

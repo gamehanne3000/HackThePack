@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {unitStyleSheet as styles} from '@styles/components/storageUnit';
 import {ListItem} from 'react-native-elements';
@@ -19,13 +19,13 @@ const ItemBox = props => {
   const detailUnit = props.data.detailUnit;
 
   // Remove
-  const removeItem = title => {
+  function removeItem(title) {
     const originalItemsArray = [...props.listData];
 
     // Give back all object that not contanins the item i want to remove
-    const result = originalItemsArray.filter(
-      element => element.partTitle !== title,
-    );
+    const result = originalItemsArray.filter(element => {
+      return element.partTitle !== title;
+    });
 
     // Update firestore with the newly filtered array
     firestore()
@@ -33,10 +33,10 @@ const ItemBox = props => {
       .doc(category)
       .collection('Parts')
       .doc(detailUnit)
-      .set({
+      .update({
         items: result,
       });
-  };
+  }
 
   return (
     <>

@@ -4,7 +4,6 @@ import auth from '@react-native-firebase/auth';
 // Firebase reference point
 const db = firestore();
 const user = auth().currentUser;
-console.log(user.uid);
 export const storageUnitRef = db.collection('Units');
 
 /*

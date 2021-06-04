@@ -36,6 +36,10 @@ target 'HackThePack' do
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
+  pod 'react-native-view-shot', :path => '../node_modules/react-native-view-shot'
+
+  pod 'RNShare', :path => '../node_modules/react-native-share'
+
   target 'HackThePackTests' do
     inherit! :complete
     # Pods for testing

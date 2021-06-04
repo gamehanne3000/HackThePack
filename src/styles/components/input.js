@@ -20,7 +20,4 @@ export const TxtInput = StyleSheet.create({
     paddingBottom: 5,
     ...Typography.FormTitle,
   },
-  placeholder: {
-    ...Typography.Placeholder,
-  },
 });

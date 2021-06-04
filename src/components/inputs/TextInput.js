@@ -18,7 +18,6 @@ export const TxtInput = ({
         value={value}
         onChangeText={onChange}
         placeholder={placeholder}
-        placeholderTextColor={styles.placeholder}
         secureTextEntry={password}
         {...props}
       />

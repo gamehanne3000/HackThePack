@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import {Colors} from '@styles/base';
+import ViewShot, {captureRef} from 'react-native-view-shot';
+import Share from 'react-native-share';
 
 /*
     Display the correct qr-code of the respective unit.
@@ -15,9 +17,24 @@ import {Colors} from '@styles/base';
 
 const GeneratQr = ({data}) => {
   const [value, setValue] = useState();
+  const viewRef = useRef(); // The view i want to reference when screen capturing
 
-  const print = () => {
-    console.log('print');
+  const shareQrCode = async () => {
+    try {
+      const uri = await captureRef(viewRef, {
+        format: 'png',
+        quality: 0.7,
+      }).then(
+        myUri => console.log('Image saved to', myUri),
+        error => console.error('Oops, snapshot failed', error),
+      );
+
+      await Share.open({url: uri}).then(error => {
+        console.log(error);
+      });
+    } catch (error) {
+      console.log('shareQrCode error: ', error);
+    }
   };
 
   const valueToQr = () => {
@@ -33,17 +50,19 @@ const GeneratQr = ({data}) => {
 
   return (
     <View>
-      <TouchableOpacity onLongPress={() => print()}>
-        <QRCode
-          value={value}
-          logo={data.icon}
-          logoSize={80}
-          logoBackgroundColor="transparent"
-          size={250}
-          backgroundColor={Colors.Lightgrey}
-          quietZone={30}
-          onError={error => console.log('Problem to generate QR: ', error)}
-        />
+      <TouchableOpacity onLongPress={() => shareQrCode()}>
+        <ViewShot ref={viewRef}>
+          <QRCode
+            value={value}
+            logo={data.icon}
+            logoSize={80}
+            logoBackgroundColor="transparent"
+            size={250}
+            backgroundColor={Colors.Lightgrey}
+            quietZone={30}
+            onError={error => console.log('Problem to generate QR: ', error)}
+          />
+        </ViewShot>
       </TouchableOpacity>
     </View>
   );

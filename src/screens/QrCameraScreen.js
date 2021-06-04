@@ -27,9 +27,8 @@ const QrCameraScreen = ({navigation}) => {
 
     if (type) {
       const parsedDataFromQr = JSON.parse(dataFromQr);
-      // send user to the specifik unit with the correct data
-      console.log(parsedDataFromQr);
 
+      // send user to the specifik unit with the correct data
       navigation.navigate('storage-unit', {
         detailUnit: parsedDataFromQr,
       });

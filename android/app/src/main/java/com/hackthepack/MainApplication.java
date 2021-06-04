@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import cl.json.RNSharePackage;
+import cl.json.ShareApplication;
+import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.horcrux.svg.SvgPackage;
@@ -41,6 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           new ReactNativeFirebaseAppPackage();
           new SplashScreenReactPackage();
+          new RNSharePackage();
           return packages;
         }
 

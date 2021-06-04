@@ -58,7 +58,7 @@ export const FormTitle = {
 };
 
 export const Placeholder = {
-  ...FontColor.DarkGrey,
+  color: Colors.DarkGrey,
   ...Font.Regular,
   ...mFontSize(15),
   opacity: 0.8,

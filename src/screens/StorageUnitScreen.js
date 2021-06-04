@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import {View, ScrollView, Text} from 'react-native';
 import GenerateQr from '@components/storage-unit/GenerateQr';
 import {detailUnitStyleSheet as styles} from '@styles/screens/detailUnit';
@@ -30,21 +30,25 @@ const StorageUnitScreen = props => {
     Retrieve all list items from the current box in real time
   */
   useEffect(() => {
-    setPermission(true);
-    setLoading(true);
-
     // Check if the current unit are the same as the author of the unit
     const checkUser = currUser => {
       try {
-        if (currUser !== auth().currentUser.uid) {
-          setPermission(false);
-        } else {
+        if (currUser === auth().currentUser.uid) {
           setCurrentUser(currUser);
+          setPermission(true);
+        } else {
+          return (
+            <View>
+              <Text>you are not allowed to read this unit </Text>
+            </View>
+          );
         }
       } catch (error) {
         console.log('something happend: ', error);
       }
     };
+
+    setLoading(true);
 
     firestore()
       .collection('Units')
@@ -62,16 +66,16 @@ const StorageUnitScreen = props => {
           .collection('Units')
           .doc(specificCategory)
           .collection('Parts')
-          .where('owner', '==', currentUser) // current user id
+          .where('owner', '==', currentUser) // show only current user id data
           .onSnapshot(
             snapshot => {
               const changes = snapshot.docChanges();
               changes.forEach(change => {
+                setItems(() => change.doc.data().items);
                 /*
                   Listeners for when something is goes trough firebase firestore
                 */
                 if (change.type === 'added') {
-                  setItems(() => change.doc.data().items); // Only push the new objects
                   console.log('New item: ', change.doc.data());
                 }
                 if (change.type === 'modified') {
@@ -80,15 +84,15 @@ const StorageUnitScreen = props => {
                 if (change.type === 'removed') {
                   console.log('Removed list item: ', change.doc.data());
                 }
+                setLoading(false);
               });
             },
             error => {
               console.log('Something went wrong retrieving the items', error);
             },
           );
-        setLoading(false);
       });
-  }, []);
+  }, [currentUser, specificCategory, specificDetailUnit]);
 
   if (!permission) {
     return (
